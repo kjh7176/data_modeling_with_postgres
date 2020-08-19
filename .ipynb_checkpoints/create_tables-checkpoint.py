@@ -64,7 +64,7 @@ def create_tables(cur, conn):
     create_table_queries.append("CREATE TABLE songplays (\
         songplay_id int PRIMARY KEY, \
         start_time timestamp, \
-        user_id varchar NOT NULL, \
+        user_id varchar, \
         level varchar NOT NULL, \
         song_id varchar NOT NULL, \
         artist_id varchar NOT NULL, \

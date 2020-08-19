@@ -64,17 +64,17 @@ def create_tables(cur, conn):
     create_table_queries.append("CREATE TABLE songplays (\
         songplay_id int PRIMARY KEY, \
         start_time timestamp, \
-        user_id int NOT NULL, \
+        user_id varchar NOT NULL, \
         level varchar NOT NULL, \
-        song_id int NOT NULL, \
-        artist_id int NOT NULL, \
+        song_id varchar NOT NULL, \
+        artist_id varchar NOT NULL, \
         session_id int NOT NULL, \
         location varchar, \
         user_agent varchar)")
     
     # users table
     create_table_queries.append("CREATE TABLE users (\
-        user_id int PRIMARY KEY, \
+        user_id varchar PRIMARY KEY, \
         first_name varchar NOT NULL, \
         last_name varchar NOT NULL, \
         gender varchar(1) NOT NULL, \
@@ -82,14 +82,14 @@ def create_tables(cur, conn):
     
     # songs table
     create_table_queries.append("CREATE TABLE songs (\
-        song_id int PRIMARY KEY, \
+        song_id varchar PRIMARY KEY, \
         artist_id int NOT NULL, \
         year int, \
         duration decimal)")
     
     # artists table
     create_table_queries.append("CREATE TABLE artists (\
-        artist_id int PRIMARY KEY, \
+        artist_id varchar PRIMARY KEY, \
         name varchar NOT NULL, \
         location varchar, \
         latitude decimal, \

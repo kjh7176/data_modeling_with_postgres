@@ -83,7 +83,8 @@ def create_tables(cur, conn):
     # songs table
     create_table_queries.append("CREATE TABLE songs (\
         song_id varchar PRIMARY KEY, \
-        artist_id int NOT NULL, \
+        title varchar NOT NULL, \
+        artist_id varchar NOT NULL, \
         year int, \
         duration decimal)")
     

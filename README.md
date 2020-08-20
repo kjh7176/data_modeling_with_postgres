@@ -44,41 +44,46 @@ $ python etl.py
 
 ## Example
 1. songplays   
-> Query  
+  > Query  
 ```
 SELECT * FROM songplays LIMIT 5;
 ```
-> Result  
+  > Result  
+
 ![songplays](/images/songplays.PNG)
    
 2. users  
-> Query  
+  > Query  
 ```
 SELECT * FROM users LIMIT 5;
 ```
-> Result  
+  > Result  
+
 ![users](/images/users.PNG)
    
 3. songs  
-> Query  
+  > Query  
 ```
 SELECT * FROM songs LIMIT 5;
 ```
-> Result  
+  > Result  
+
 ![songs](/images/songs.PNG)
 
 4. artists  
-> Query  
+  > Query  
 ```
 SELECT * FROM artists LIMIT 5;
 ```
-> Result  
+  > Result  
+
 ![artists](/images/artists.PNG)
 
 5. time  
-> Query  
+  > Query  
 ```
 SELECT * FROM time LIMIT 5;
 ```
-> Result  
+  > Result  
+
 ![time](/images/time.PNG)

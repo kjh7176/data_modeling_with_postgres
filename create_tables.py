@@ -99,10 +99,12 @@ def create_tables(cur, conn):
     # time table
     create_table_queries.append("CREATE TABLE time (\
         start_time timestamp PRIMARY KEY, \
-        hour varchar NOT NULL, \
-        location varchar, \
-        latitude decimal, \
-        longitude decimal)")
+        hour int, \
+        day int, \
+        weekofyear int, \
+        month int, \
+        year int, \
+        weekday int)")
     
     for query in create_table_queries:
         cur.execute(query)

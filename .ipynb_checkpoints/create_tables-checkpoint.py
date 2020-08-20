@@ -31,23 +31,7 @@ def drop_tables(cur, conn):
     """
     Drops each table using the queries in `drop_table_queries` list.
     """
-    drop_table_queries = []
-    
-    # songplays table
-    drop_table_queries.append("DROP TABLE IF EXISTS songplays")
-    
-    # users table
-    drop_table_queries.append("DROP TABLE IF EXISTS users")
-    
-    # songs table
-    drop_table_queries.append("DROP TABLE IF EXISTS songs")
-    
-    # artists table
-    drop_table_queries.append("DROP TABLE IF EXISTS artists")
-    
-    # time table
-    drop_table_queries.append("DROP TABLE IF EXISTS time")
-    
+   
     for query in drop_table_queries:
         cur.execute(query)
         conn.commit()
@@ -58,51 +42,6 @@ def create_tables(cur, conn):
     """
     Creates each table using the queries in `create_table_queries` list. 
     """
-    create_table_queries = []
-    
-    # songplays table
-    create_table_queries.append("CREATE TABLE songplays (\
-        songplay_id int PRIMARY KEY, \
-        start_time timestamp, \
-        user_id varchar, \
-        level varchar NOT NULL, \
-        song_id varchar NOT NULL, \
-        artist_id varchar NOT NULL, \
-        session_id int NOT NULL, \
-        location varchar, \
-        user_agent varchar)")
-    
-    # users table
-    create_table_queries.append("CREATE TABLE users (\
-        user_id varchar PRIMARY KEY, \
-        first_name varchar NOT NULL, \
-        last_name varchar NOT NULL, \
-        gender varchar(1) NOT NULL, \
-        level varchar NOT NULL)")
-    
-    # songs table
-    create_table_queries.append("CREATE TABLE songs (\
-        song_id varchar PRIMARY KEY, \
-        title varchar NOT NULL, \
-        artist_id varchar NOT NULL, \
-        year int, \
-        duration decimal)")
-    
-    # artists table
-    create_table_queries.append("CREATE TABLE artists (\
-        artist_id varchar PRIMARY KEY, \
-        name varchar NOT NULL, \
-        location varchar, \
-        latitude decimal, \
-        longitude decimal)")
-    
-    # time table
-    create_table_queries.append("CREATE TABLE time (\
-        start_time timestamp PRIMARY KEY, \
-        hour varchar NOT NULL, \
-        location varchar, \
-        latitude decimal, \
-        longitude decimal)")
     
     for query in create_table_queries:
         cur.execute(query)

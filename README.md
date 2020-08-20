@@ -16,6 +16,9 @@ Currently, they don't have an easy way to query their data, which resides in a d
 #### 1. Copy
 ```
 $ git clone https://github.com/kjh7176/data_modeling_with_postgres
+
+# change current working directory
+$ cd data_modeling_with_postgres
 ```
 
 #### 2. Create Database and Tables

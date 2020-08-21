@@ -6,20 +6,36 @@ from sql_queries import *
 
 
 def process_song_file(cur, filepath):
+    """
+    Reads song file and inserts data into artist and song tables.
+    
+    Params:
+    - cur: cursor for db connection to execute queries
+    - filepath: json file path
+    """
+    
     # open song file
     df = pd.read_json(filepath, lines=True)
-
-    # insert song record
-    song_data = list(df[['song_id', 'title', 'artist_id', 'year', 'duration']].values[0])
-    cur.execute(song_table_insert, song_data)
     
     # insert artist record
     artist_data = list(df[['artist_id', 'artist_name', 'artist_location', \
                            'artist_latitude', 'artist_longitude']].values[0])
     cur.execute(artist_table_insert, artist_data)
 
+    # insert song record
+    song_data = list(df[['song_id', 'title', 'artist_id', 'year', 'duration']].values[0])
+    cur.execute(song_table_insert, song_data)
+
 
 def process_log_file(cur, filepath):
+    """
+    Reads log file and inserts data into time, users and songplays tables.
+    
+    Params:
+    - cur: cursor for db connection to execute queries
+    - filepath: json file path
+    """
+    
     # open log file
     df = pd.read_json(filepath, lines=True)
 
@@ -44,7 +60,7 @@ def process_log_file(cur, filepath):
     # insert user records
     for i, row in user_df.iterrows():
         cur.execute(user_table_insert, row)
-
+    
     # insert songplay records
     for index, row in df.iterrows():
         
@@ -62,8 +78,19 @@ def process_log_file(cur, filepath):
                          row.sessionId, row.location, row.userAgent)
         cur.execute(songplay_table_insert, songplay_data)
 
-
 def process_data(cur, conn, filepath, func):
+    """
+    Walks through filepath to get the full path of each json file in the directory.
+    And then executes the function passed by func parameter.
+    Prints how many files were processed at the end of each process.
+    
+    Params:
+    - cur: cursor for db connection to execute queries
+    - conn: db connection object
+    - filepath: directory path where json files exist
+    - func: function name (process_song_file or process_log_file)
+    """
+    
     # get all files matching extension from directory
     all_files = []
     for root, dirs, files in os.walk(filepath):
@@ -83,6 +110,10 @@ def process_data(cur, conn, filepath, func):
 
 
 def main():
+    """
+    Connects database and executes ETL process on json files in data directory. 
+    """
+    
     try:
         conn = psycopg2.connect("host=127.0.0.1 dbname=sparkifydb user=student password=student")
     except Exception as e:

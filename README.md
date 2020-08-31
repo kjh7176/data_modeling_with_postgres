@@ -8,9 +8,9 @@ The analytics team is particularly interested in understanding what songs users 
 Currently, they don't have an easy way to query their data, which resides in a directory of JSON logs on user activity on the app, as well as a directory with JSON metadata on the songs in their app.  
 
 ## File Description
-- `create_tables.py` drops and creates your tables. You run this file to reset your tabels before each time you run your ETL scripts.
-- `etl.py` reads and processes files from **data/song_data** and **data/log_data** and loads them into your tables. You can fill this out based on your work in the ETL notebook.
-- `test.ipynb` displays the first few rows of each table to let you check your database.
+- `create_tables.py` drops and creates your tables. You run this file to reset tabels before each time you run your ETL scripts.
+- `etl.py` reads and processes files from **data/song_data** and **data/log_data** and loads them into your tables.  
+- `test.ipynb` displays the first few rows of each table to check database.
 - `etl.ipynb` reads and processes a single file from **data/song_data** and **data/log_data** and loads the data into your tables. This notebook contains detailed instructions on the ETL process for each of the tables.
 - `sql_queries.py`contains all your sql queries, and is imported into the last three files above.
 
